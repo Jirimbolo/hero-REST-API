@@ -1,4 +1,4 @@
-//Tarvittavat 
+//Tarvittavat säädöt
 
 require('dotenv').config();
 const express = require('express');
