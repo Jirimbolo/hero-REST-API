@@ -35,7 +35,7 @@ app.get('/getall', async (req, res) => {
     try {
         const events = await Event.find();
         res.json(events);
-        console.log("sending all data")
+        console.log("Kaikki data lähetetty!")
     }
     catch (error){
         console.log(error);
@@ -72,12 +72,12 @@ app.get('/get/:id', async (req, res) => {
 
 app.post('/add',  async (req, res) => {
     const { name, universe, message } = req.body;
-    console.log("Uusi sankari muodostettu")
+    console.log("Uusi sankari muodostettu");
     try {
         const Event = new Event({name: name, universe: universe, message: message});
         await Event.save();
-        res.status(201).json("Sinne meni" + name);
-        console.log("Uusi sankari lisätty");
+        res.status(201).json("Sinne lähti" + name);
+        console.log(name, universe, message);
     }
     catch (error) {
         console.log(error);
@@ -90,21 +90,17 @@ app.post('/add',  async (req, res) => {
 app.put('/update/:id', async (req, res) => {
     const { id } = req.params;
     if (id.length !== 24) {
-        return res.status(404).json("jotain väärin");
+        return res.status(404).json("Jotain meni väärin id:n kanssa.");
     }
     else {
-        const {
-            name,
-            universe,
-            message
-        } = req.body;
-
+        const { name: name, universe: universe, message: message } = req.body;
         try {
             const event = await Event.findByIdAndUpdate(id, {name: name, universe: universe, message: message}, { new: true });
             if (!event) {
                 return res.status(404).json("Sankaria ei löydy");
             } else {
-            res.status(200).json();
+            const message = "Sankaria päivitetty!";
+            res.status(200).json(message);
             console.log("Onnistui täydellisesti");
         }
     }
@@ -120,7 +116,7 @@ app.put('/update/:id', async (req, res) => {
  app.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     if (id.length !== 24) {
-        return res.status(404).json("Väärä ID");
+        return res.status(404).json("Jotain meni väärin id:n kanssa.");
     }
     else {
         try {
@@ -130,7 +126,7 @@ app.put('/update/:id', async (req, res) => {
             }
             else{
                 const message = "Sankari poistettu!";
-                res.status(200).json();
+                res.status(200).json(message);
                 console.log("Onnistunut poisto");
             }
             }
