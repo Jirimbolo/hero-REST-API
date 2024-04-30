@@ -8,7 +8,3 @@ JavaScript
 MongoDB ja Mongoose
 NodeJS
 
-Tärkeätä asettaa Github toimimaan GitInit tyylillä, lataa tarvittavat moduulit
-luoda .env tiedosto, jonka sisässä API KEY jos tarvis sekä MongoDB.
-
-Kertaa luentoja ja tee muistiinpanoja.
