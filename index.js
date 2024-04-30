@@ -8,7 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Otetaan .env kansio käyttöön
 const dotenv = require ('dotenv').config();
-const port = dotenv.parsed.PORT00 || 3000;
+//const port = dotenv.parsed.PORT00 || 3000;
+// Seuraava komento otettu käyttöön Renderin ehdotuksesta
+const port = process.env.PORT || 3000;
 
 // Muodostetaan yhteys MongoDB:n tietokantaan
 const mongoose = require('mongoose');
