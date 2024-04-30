@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Otetaan .env kansio käyttöön
-const dotenv = require ('dotenv').config();
+// const dotenv = require ('dotenv').config();
 //const port = dotenv.parsed.PORT00 || 3000;
 // Seuraava komento otettu käyttöön Renderin ehdotuksesta
 const port = process.env.PORT || 3000;
